@@ -45,13 +45,21 @@ const showBooks = (books, length) => {
     // books showing in search result
     booksShowing.innerText = books.length;
     totalBooks.innerText = length;
+    let imgUrl ;
+
     books.forEach(book =>{
+        if(book.cover_i){
+            imgUrl = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+        }
+        else{
+            imgUrl = "https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png";
+        }
         const div = document.createElement('div');
         div.innerHTML = `
         <div class="col">
             <div class="card">
               <div class="card-body">
-              <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" alt="">
+              <img src="${imgUrl}" alt="">
               <h5 class="card-title">${book.title}</h5>
               <p class="card-text author-name">${book.author_name}</p>
               <p class="card-text publisher-name">${book.publisher}</p>
